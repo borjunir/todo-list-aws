@@ -12,6 +12,8 @@ A continuación se describe la estructura del proyecto:
 - **template.yaml** - Template que define los recursos AWS de la aplicación
 - **localEnvironment.json** - Permite el despliegue en local de la aplicación sobreescribiendo el endpoint de dynamodb para que apunte contra el docker de dynamo
 
+## Añadidos cometnarios de las diferentes funciones python en src
+* Añadida informacion para entender mejor que hace cada funcion
 ## Despliegue manual de la aplicación SAM en AWS
 
 Para utilizar SAM CLI se necesitan las siguientes herramientas:
