@@ -2,6 +2,7 @@ import json
 import decimalencoder
 import todoList
 
+#Funcion Lamda para recoger la informacion de una tarea a partir del id de esta
 
 def get(event, context):
     # create a response
