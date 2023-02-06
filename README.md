@@ -13,8 +13,20 @@ A continuación se describe la estructura del proyecto:
 - **localEnvironment.json** - Permite el despliegue en local de la aplicación sobreescribiendo el endpoint de dynamodb para que apunte contra el docker de dynamo
 
 ## Añadidos cometnarios de las diferentes funciones python en src
-* Añadida informacion para entender mejor que hace cada funcion
-## Despliegue manual de la aplicación SAM en AWS
+* create.py: Funcion que llama a Lambda que crea un nuevo elemento en la lista de tareas.Extrae el nombre de la tarea y su estado de check a partir de lo que se ponga en --data. Confirma que tiene contenido ese data y sube la tarea a la BBDD ademas de contestar con un 200. Si lo que recibe no contiene un text (nombre de tarea) genera un error
+* decimalencoder.py: Sirve para transformar un objecto de clase decimal.Decimal en int. De esta manera solucionael problema del modulo json que no sabe trabajar con objetos decimales
+* delete.py: Funcion para eliminar tareas a partir dos parametros (evento y contexto) a traves de la funcion Lamda. De esta manera, llama a la funcion delete_item del modulo todoList
+* get.py: Funcion Lamda para recoger la informacion de una tarea a partir del id de esta
+* list.py: Funcion que recoge todos los elementos de la lista de tareas
+* todoList.py: #Script de python para ejecutar las diferentes tareas atribuidas al todoList
+	get_item: coge un elemento de la lista a partir de un id
+	get_items: coge todos los elementos de la lista
+	put_item: agrega un elemento-tarea en la lista de tareas
+	update_item: actualiza la informacion de la tarea a partir de un id
+	delete_item: borra un elemento de la lista a partir de un id
+	create_todo_table: crea una lista nueva (tabla en dynamodb)
+* update.py: Funcion que actualiza un elemento de la lista de tareas a partir de un id
+# Despliegue manual de la aplicación SAM en AWS
 
 Para utilizar SAM CLI se necesitan las siguientes herramientas:
 

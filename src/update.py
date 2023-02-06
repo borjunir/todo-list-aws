@@ -3,7 +3,6 @@ import logging
 import decimalencoder
 import todoList
 
-#Funcion que actualiza un elemento de la lista de tareas a partir de un id
 
 def update(event, context):
     data = json.loads(event['body'])

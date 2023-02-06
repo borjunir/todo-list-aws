@@ -6,13 +6,6 @@ import json
 import functools
 from botocore.exceptions import ClientError
 
-#Script de python para ejecutar las diferentes tareas atribuidas al todoList
-#get_item: coge un elemento de la lista a partir de un id
-#get_items: coge todos los elementos de la lista
-#put_item: agrega un elemento-tarea en la lista de tareas
-#update_item: actualiza la informacion de la tarea a partir de un id
-#delete_item: borra un elemento de la lista a partir de un id
-#create_todo_table: crea una lista nueva (tabla en dynamodb)
 
 def get_table(dynamodb=None):
     if not dynamodb:
