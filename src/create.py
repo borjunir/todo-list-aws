@@ -2,6 +2,7 @@ import json
 import logging
 import todoList
 
+
 def create(event, context):
     data = json.loads(event['body'])
     if 'text' not in data:
