@@ -143,7 +143,7 @@ Para la implementación del CI/CD de la aplicación se utilizan los siguientes P
 
 
 ## Limpieza
-
+#SUSTITUIDO POR clean-and-delete.sh integrado en PIPELINE-FULL-STAGING - Jenkinsfile
 Para borrar la apliación y eliminar los stacks creados ejecutar los siguientes comandos:
 
 ```bash
