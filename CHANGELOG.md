@@ -14,3 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.2]
 ### Added
 - Modificado samconfig.toml para agregar el s3_bucket de default
+## [1.0.3]
+### Added
+- Modificado samconfig.toml agregando distintos buckets para cada environment
+- Actualizado README.md con comentarios para correcciones de codigo
