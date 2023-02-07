@@ -24,4 +24,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Creado common-step para borrado de app y limpieza de stack con clean-and-delete.sh
 - Agregada linea en Jenkinsfile de PIPELINE-FULL-STAGING para invocar a clean-and-delete.sh
->>>>>>> feature
