@@ -54,6 +54,8 @@ pipeline {
     }
     post { 
         always { 
+            echo 'Clean ENV: delete app and delete stack'
+	    sh "bash pipelines/common-steps/clean-and-delete.sh"
             echo 'Clean env: delete dir'
             cleanWs()
         }
