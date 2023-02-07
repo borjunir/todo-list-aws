@@ -14,3 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.2]
 ### Added
 - Modificado samconfig.toml para agregar el s3_bucket de default
+## [1.0.3] - 2023-02-07
+### Added
+- Creado common-step para borrado de app y limpieza de stack con clean-and-delete.sh
+- Agregada linea en Jenkinsfile de PIPELINE-FULL-STAGING para invocar a clean-and-delete.sh
