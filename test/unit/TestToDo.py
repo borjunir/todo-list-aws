@@ -199,5 +199,14 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.assertRaises(TypeError, delete_item("", self.dynamodb))
         print ('End: test_delete_todo_error')
 
+    def test_get_tablename(self):
+        print('---------------------')
+        print('Start:test_get_tablename')
+        from src.todoList import get_table
+        os.environ["ENDPOINT_OVERRIDE"] = ""
+        table_name = get_table()
+        self.asserIsNotNone(table_name)
+        print(f"{table_name} is the name of the table")
+
 if __name__ == '__main__':
     unittest.main()
