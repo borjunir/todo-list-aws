@@ -203,7 +203,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         print('---------------------')
         print('Start:test_get_tablename')
         from src.todoList import get_table
-        os.environ["URL"] = ""
+        os.environ["ENDPOINT_OVERRIDE"] = ""
         table_name = get_table()
         self.asserIsNotNone(table_name)
         print(f"{table_name} is the name of the table")
