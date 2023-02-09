@@ -205,7 +205,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         from src.todoList import get_table
         os.environ["ENDPOINT_OVERRIDE"] = ""
         table_name = get_table()
-        self.asserIsNotNone(table_name)
+        self.assertIsNotNone(table_name)
         print(f"{table_name} is the name of the table")
 
 if __name__ == '__main__':
