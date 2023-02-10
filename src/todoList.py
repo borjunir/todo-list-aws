@@ -7,6 +7,20 @@ import functools
 from botocore.exceptions import ClientError
 
 
+def get_translate(text, lang):
+    # Incluido translate para caso practico apartado C
+    translate = boto3.client(service_name='translate', region_name='us-east-1')
+    try:
+        result = translate.translate_text(
+                Text=text, SourceLanguageCode="auto", TargetLanguageCode=lang
+        )
+    
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+    else:
+        return result.get('TranslateText')
+
+
 def get_table(dynamodb=None):
     if not dynamodb:
         URL = os.environ['ENDPOINT_OVERRIDE']
@@ -16,7 +30,6 @@ def get_table(dynamodb=None):
             boto3.resource = functools.partial(boto3.resource,
                                                endpoint_url=URL)
         dynamodb = boto3.resource("dynamodb")
-    # fetch todo from the database
     table = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
     return table
 

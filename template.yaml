@@ -27,6 +27,17 @@ Globals:
     
 Resources:
   
+  GetTranslateTodoFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Role: !Sub "arn:aws:iam::${AWS::AccountId}:role/LabRole"
+      Handler: translate.translate
+        Create:
+          Type: Api
+          Properties:
+            Path: /todos/{id}/{lang}
+            Method: get
   CreateTodoFunction:
     Type: AWS::Serverless::Function 
     Properties:
@@ -115,6 +126,9 @@ Outputs:
   BaseUrlApi:
     Description: "Base URL of API"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod"
+  GetTranslateTodoApi:
+    Description: "API Gateway endpoint URL for ${opt:stage} stage for Translate TODO"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/todos/{id}/{lang}"
   CreateTodoApi:
     Description: "API Gateway endpoint URL for ${opt:stage} stage for Create TODO"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/todos/"
