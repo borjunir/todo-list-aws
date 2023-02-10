@@ -184,11 +184,11 @@ class TestDatabaseFunctions(unittest.TestCase):
 
    def test_get_translate(self):
        print ('---------------------')
-       print ('Start: test_get_translate')   
+       print ('Start: test_get_translate')
        from src.todoList import get_translate
        from src.todoList import get_item
        from src.todoList import put_item
-                                  
+
        translateSelfTextEn = get_translate(self.text, 'en')
        print ('translateSelfTextEn: ' + str(translateSelfTextEn))
        translateSelfTextFr = get_translate(self.text, 'fr')
@@ -204,7 +204,7 @@ class TestDatabaseFunctions(unittest.TestCase):
               iditem,
               self.dynamodb)
        print ('Response Get:' + str(responseGet))
-                                                                                                                                                                    
+
        translateRespTextEn = get_translate(responseGet['text'], 'en')
        print ('translateRespTextEn: ' + str(translateRespTextEn))
        self.assertEqual(translateSelfTextEn, translateRespTextEn)
