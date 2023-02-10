@@ -8,7 +8,7 @@ def translate(event, context):
         translate = todoList.get_translate(
                 result['text'],
                 event['pathParameters']['lang'])
-      
+
         if result and translate:
             result['text'] = translate
             response = {
