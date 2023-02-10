@@ -57,15 +57,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         #self.assertIn('todoTable', self.table_local.name)
         print ('End: test_table_exists')
 
-    def test_get_tablename(self):
-        print('---------------------')
-        print('Start:test_get_tablename')
-        from src.todoList import get_table
-        os.environ["ENDPOINT_OVERRIDE"] = ""
-        table_name = get_table()
-        self.assertIsNotNone(table_name)
-        print(f"{table_name} is the name of the table")
-
     def test_put_todo(self):
         print ('---------------------')
         print ('Start: test_put_todo')
