@@ -57,6 +57,14 @@ class TestDatabaseFunctions(unittest.TestCase):
         #self.assertIn('todoTable', self.table_local.name)
         print ('End: test_table_exists')
         
+     def test_get_tablename(self):
+         print('---------------------')
+         print('Start:test_get_tablename')
+         from src.todoList import get_table
+         os.environ["ENDPOINT_OVERRIDE"] = ""
+         table_name = get_table()
+         self.assertIsNotNone(table_name)
+         print(f"{table_name} is the name of the table")
 
     def test_put_todo(self):
         print ('---------------------')
@@ -174,6 +182,37 @@ class TestDatabaseFunctions(unittest.TestCase):
                 self.dynamodb))
         print ('End: test_update_todo_error')
 
+   def test_get_translate(self):
+       print ('---------------------')
+       print ('Start: test_get_translate')   
+       from src.todoList import get_translate
+       from src.todoList import get_item
+       from src.todoList import put_item
+                                  
+       translateSelfTextEn = get_translate(self.text, 'en')
+       print ('translateSelfTextEn: ' + str(translateSelfTextEn))
+       translateSelfTextFr = get_translate(self.text, 'fr')
+       print ('translateSelfTextFr: ' + str(translateSelfTextFr))
+       # Testing file functions
+       # mock
+       responsePut = put_item(self.text, self.dynamodb)
+       print ('Response put_item:' + str(responsePut))
+       iditem = json.loads(responsePut['body'])['id']
+       print ('Id item:' + iditem)
+       self.assertEqual(200, responsePut['statusCode'])
+       responseGet = get_item(
+              iditem,
+              self.dynamodb)
+       print ('Response Get:' + str(responseGet))
+                                                                                                                                                                    
+       translateRespTextEn = get_translate(responseGet['text'], 'en')
+       print ('translateRespTextEn: ' + str(translateRespTextEn))
+       self.assertEqual(translateSelfTextEn, translateRespTextEn)
+       translateRespTextFr = get_translate(responseGet['text'], 'fr')
+       print ('translateRespTextFr: ' + str(translateRespTextFr))
+       self.assertEqual(translateSelfTextFr, translateRespTextFr)
+       print ('End: test_get_translate')
+
     def test_delete_todo(self):
         print ('---------------------')
         print ('Start: test_delete_todo')
@@ -198,15 +237,6 @@ class TestDatabaseFunctions(unittest.TestCase):
         # Testing file functions
         self.assertRaises(TypeError, delete_item("", self.dynamodb))
         print ('End: test_delete_todo_error')
-
-    def test_get_tablename(self):
-        print('---------------------')
-        print('Start:test_get_tablename')
-        from src.todoList import get_table
-        os.environ["ENDPOINT_OVERRIDE"] = ""
-        table_name = get_table()
-        self.assertIsNotNone(table_name)
-        print(f"{table_name} is the name of the table")
 
 if __name__ == '__main__':
     unittest.main()
