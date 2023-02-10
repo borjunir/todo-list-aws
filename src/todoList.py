@@ -14,7 +14,7 @@ def get_translate(text, lang):
         result = translate.translate_text(
                 Text=text, SourceLanguageCode="auto", TargetLanguageCode=lang
         )
-   
+
     except ClientError as e:
         print(e.response['Error']['Message'])
     else:
